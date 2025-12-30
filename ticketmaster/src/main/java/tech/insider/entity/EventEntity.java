@@ -5,12 +5,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.Set;
 
 @Entity
-public class EventEntity extends PanacheEntityBase {
+public class   EventEntity extends PanacheEntityBase {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    public Long id;
+
+   @OneToMany(mappedBy = "event")
+   public Set<SeatEntity> seats;
 
    public String name;
 
